@@ -1,0 +1,36 @@
+<div class="container">
+    <h1 class="center">Eating Burgers</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <ul>
+                    {{#each data}}
+                        {{#unless this.devoured}}
+                            <form action="/api/burger/{{id}}" method="POST">
+                                <li>{{this.id}}. {{this.burger_name}}</li>
+                                <button type="submit" class="btn btn-warning devourBtn">Devour Burger</button>
+                            </form>
+                        {{/unless}}
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="col-6">
+                <ul>
+                    {{#each data}}
+                        {{#if this.devoured}}
+                            <li>{{this.id}}. {{this.burger_name}}</li>
+                        {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <form action="/api/burger" method="POST">
+                    <input name="burgerName" class="newBurger" type="text">
+                    <button type="submit"class="newBurgerBtn">Add New Burger</button>
+                </form>
+            </div>
+        </div>
+    </div> 
+</div>
